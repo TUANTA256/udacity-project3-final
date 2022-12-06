@@ -27,7 +27,7 @@ commands:
           name: Revert migrations
           when: on_fail
           command: |
-            SUCCESS=$(curl --insecure https://kvdb.io/E2EWQQcGaY9xGnoPaidEtG/migration_<<parameters.workflow_id>>)
+            SUCCESS=$(curl --insecure https://kvdb.io/cmAoVFFe8W3eJcWEWm41B/migration_<<parameters.workflow_id>>)
             # Logic for reverting the database state
             if (( $SUCCESS == 1 ));
             then
@@ -246,7 +246,7 @@ jobs:
           command: |   
             if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
             then
-                curl https://kvdb.io/E2EWQQcGaY9xGnoPaidEtG/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
+                curl https://kvdb.io/cmAoVFFe8W3eJcWEWm41B/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
             fi
       - slack/notify:
           event: fail
@@ -271,7 +271,7 @@ jobs:
             export API_URL="http://${BACKEND_IP}:3030"
             echo "${API_URL}"
             echo API_URL="http://${BACKEND_IP}:3030" >> frontend/.env
-            curl https://kvdb.io/E2EWQQcGaY9xGnoPaidEtG/apiurl -d ${API_URL}
+            curl https://kvdb.io/cmAoVFFe8W3eJcWEWm41B/apiurl -d ${API_URL}
             cat frontend/.env
       - run:
           name: Deploy frontend objects
@@ -332,7 +332,7 @@ jobs:
       - run:
           name: Backend smoke test.
           command: |
-            API_URL=$(curl --insecure https://kvdb.io/E2EWQQcGaY9xGnoPaidEtG/apiurl)
+            API_URL=$(curl --insecure https://kvdb.io/cmAoVFFe8W3eJcWEWm41B/apiurl)
             echo "${API_URL}"
             if curl "${API_URL}/api/status" | grep "ok"
             then
