@@ -147,11 +147,11 @@ jobs:
 
   deploy-infrastructure:
     docker:
-      - image: amazon/aws-cli
+      - image: amazon/aws-cli:2.8.12
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["73:2a:c1:d7:4b:10:1e:2f:cf:27:e0:34:22:60:0a:1e"]
+          fingerprints: ["6d:c8:09:07:06:8c:74:5f:fd:9e:ac:e6:2c:dc:4c:29"]
       - run:
           name: Install dependencies
           command: yum install -y tar gzip
@@ -204,7 +204,7 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["73:2a:c1:d7:4b:10:1e:2f:cf:27:e0:34:22:60:0a:1e"]
+          fingerprints: ["6d:c8:09:07:06:8c:74:5f:fd:9e:ac:e6:2c:dc:4c:29"]
       - attach_workspace:
           at: ~/
       - run:
@@ -231,7 +231,7 @@ jobs:
       - restore_cache:
           keys: [backend-build]
       - add_ssh_keys:
-          fingerprints: ["73:2a:c1:d7:4b:10:1e:2f:cf:27:e0:34:22:60:0a:1e"]
+          fingerprints: ["6d:c8:09:07:06:8c:74:5f:fd:9e:ac:e6:2c:dc:4c:29"]
       - attach_workspace:
           at: ~/
       - run:
@@ -293,7 +293,7 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["73:2a:c1:d7:4b:10:1e:2f:cf:27:e0:34:22:60:0a:1e"]
+          fingerprints: ["6d:c8:09:07:06:8c:74:5f:fd:9e:ac:e6:2c:dc:4c:29"]
       - attach_workspace:
           at: ~/
       - run:
@@ -358,11 +358,11 @@ jobs:
 
   cloudfront-update:
     docker:
-      - image: amazon/aws-cli
+      - image: amazon/aws-cli:2.8.12
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["73:2a:c1:d7:4b:10:1e:2f:cf:27:e0:34:22:60:0a:1e"]
+          fingerprints: ["6d:c8:09:07:06:8c:74:5f:fd:9e:ac:e6:2c:dc:4c:29"]
       - run:
           name: Install dependencies
           command: |
@@ -384,11 +384,11 @@ jobs:
 
   cleanup:
     docker:
-      - image: amazon/aws-cli
+      - image: amazon/aws-cli:2.8.12
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["73:2a:c1:d7:4b:10:1e:2f:cf:27:e0:34:22:60:0a:1e"]
+          fingerprints: ["6d:c8:09:07:06:8c:74:5f:fd:9e:ac:e6:2c:dc:4c:29"]
       - run:
           name: Install dependencies
           command: |
